@@ -1,0 +1,186 @@
+/* custom button search */
+.btn-dark {
+  --bs-btn-color: #425CC7;
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: #fff;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #425CC7;
+  --bs-btn-hover-border-color: #425CC7;
+  --bs-btn-focus-shadow-rgb: 66, 70, 73;
+  --bs-btn-active-color: #425CC7;
+  --bs-btn-active-bg: #fff;
+  --bs-btn-active-border-color: #373b3e;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #425CC7;
+  --bs-btn-disabled-bg: #fff;
+  --bs-btn-disabled-border-color: #fff;
+}
+
+/* custom search button */
+.search-btn {
+  width: 40px; 
+  height:40px;
+  border-right: none;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  --bs-btn-color: #425CC7;
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: var(--bs-border-color-translucent);
+  --bs-btn-hover-color: #ced4da;
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-border-color: 1px solid #ced4da;
+  --bs-btn-focus-shadow-rgb: 66, 70, 73;
+  --bs-btn-active-color: #425CC7;
+  --bs-btn-active-bg: #fff;
+  --bs-btn-active-border-color: #373b3e;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #425CC7;
+  --bs-btn-disabled-bg: #fff;
+  --bs-btn-disabled-border-color: #fff;
+}
+
+/* custom search text */
+.search-text{
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  box-shadow: none;
+}
+
+/* navbar background*/
+.menu {
+  background-color: #ffffff00 !important;
+}
+
+.menu2{
+  background-color: #ffffff !important;
+  border: 3px solid #54C8E8;
+}
+
+/* text color singin and signup */
+.log-text {
+  color: #fff !important;
+}
+
+/* custom client button */
+.btn-client {
+  border-radius: 2rem;
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #425CC7;
+  --bs-btn-border-color: #425CC7;
+  --bs-btn-hover-color: #425CC7;
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-border-color: #425CC7;
+  --bs-btn-focus-shadow-rgb: 66, 70, 73;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #425CC7;
+  --bs-btn-active-border-color: #425CC7;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #425CC7;
+  --bs-btn-disabled-border-color: #425CC7;
+}
+
+/* custom destrabadores button */
+.btn-destrabadores {
+  border-radius: 2rem;
+  --bs-btn-color: #425CC7;
+  --bs-btn-border-color: #aaaaaa;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #425CC7;
+  --bs-btn-hover-border-color: #425CC7;
+  --bs-btn-focus-shadow-rgb: 33, 37, 41;
+  --bs-btn-active-color: #425CC7;
+  --bs-btn-active-bg: #fff;
+  --bs-btn-active-border-color: #425CC7;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #425CC7;
+  --bs-btn-disabled-bg: transparent;
+  --bs-gradient: none;
+}
+
+/* custom publish now button */
+.btn-publish {
+  border-radius: 2rem;
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #54C8E8;
+  --bs-btn-border-color: #54C8E8;
+  --bs-btn-hover-color: #54C8E8;
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-border-color: #54C8E8;
+  --bs-btn-focus-shadow-rgb: 66, 70, 73;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #54C8E8;
+  --bs-btn-active-border-color: #54C8E8;
+  --bs-btn-active-shadow: inset 0 3px 5px #54C8E8;
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #54C8E8;
+  --bs-btn-disabled-border-color: #54C8E8;
+  --bs-btn-focus-box-shadow: 0 0 0 0.25rem #54C8E8;
+  box-shadow: none;
+}
+
+/* custom user button */
+.user  {
+  color: #425CC7;
+  font-size: 2.5rem;
+}
+
+
+/* responsive form */
+
+/* Small devices (landscape phones, 576px and down) */
+@media (max-width: 576px) {
+
+  /* navbar background*/
+  .menu {
+    background-color: #ffffff !important;
+    border: 3px solid #54C8E8 !important;
+  }
+
+  /* text color singin and signup */
+  .log-text {
+    color: #425CC7 !important;
+    font-weight: bold !important;
+  }
+}
+
+/* Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+
+  /* navbar background*/
+  .menu {
+    background-color: #ffffff !important;
+    border: 3px solid #54C8E8 !important;
+  }
+
+  /* text color singin and signup */
+  .log-text {
+    color: #425CC7 !important;
+    font-weight: bold !important;
+  }
+}
+
+/* Large devices (desktops, 992px and down) */
+@media (max-width: 992px) {
+
+  /* navbar background*/
+  .menu {
+    background-color: #ffffff !important;
+    border: 3px solid #54C8E8 !important;
+  }
+
+  /* text color singin and signup */
+  .log-text {
+    color: #425CC7 !important;
+    font-weight: bold !important;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+  /* text color singin and signup */
+  .log-text {
+    color: #fff !important;
+  }
+}

@@ -1,0 +1,83 @@
+<div class="row justify-content-center col-12 bg-form">
+    <div class="project-screen">
+        <div class="col-xl-12">
+            <div class="row pt-3 p-3">
+                <!-- preview images and video for project-->
+                <div class="col-xl-3">
+                    <div class="card-service shadow-img">
+                        <div class="card-service-header">
+                            <div id="carouselProjectScreen" class="carousel slide carousel-fade" data-bs-interval="false">
+                                <div class="carousel-inner">
+                                  <div class="carousel-item active" *ngIf="previewVideo">
+                                    <video [src]="previewVideo" controls></video>
+                                  </div>
+                                  <div class="carousel-item" *ngIf="previewImg">
+                                    <img [src]="previewImg" alt="preview-img-service" />
+                                  </div>
+                                  <div class="carousel-item" *ngIf="previewImgTwo">
+                                    <img [src]="previewImgTwo" alt="preview-img-service" />
+                                  </div>
+                                  <div class="carousel-item" *ngIf="previewImgThree">
+                                    <img [src]="previewImgThree" alt="preview-img-service" />
+                                  </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjectScreen" data-bs-slide="prev">
+                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Anterior</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselProjectScreen" data-bs-slide="next">
+                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Siguiente</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9" id="shortDescription">
+                    <div class="p-3">
+                        <h5 class="first-color-blue"><strong>{{nameProject}}</strong></h5>
+                        <p id="description" class="second-color-blue">{{shortDescription}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-form m-3" id="longDescription">
+                <div class="p-3">
+                    <h5 class="pb-3"><strong>Descripción completa del proyecto</strong></h5>
+                    <p>
+                        {{longDescription}}
+                    </p>
+                </div>
+            </div>
+            <div class="px-3">
+                <div class="row">
+                    <div class="col-xl-6" id="features">
+                        <div class="bg-form p-3">
+                            <h5><strong>Características del proyecto</strong></h5>
+                            <ul>
+                                <li>Presupuesto de {{budget| currency:'MNX':'$':'1.0-0'}} pesos mexicanos</li>
+                                <li>Como destrabador recibirías hasta {{priceReceive | currency:'MNX':'$':'1.0-0'}} pesos mexicanos</li>
+                                <li>Fecha de entrega esperada: {{deliveryDate | date:"dd-MM-yyyy"}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6" id="requirements">
+                        <div class="bg-form p-3">
+                            <h5><strong>Requisitos para participar</strong></h5>
+                            <ul class="align-middle">
+                                <li *ngFor="let requirements of requirementsProject">
+                                    {{requirements.requirement}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center col-12 py-3">
+            <div class="p-2 px-4"><button type="button" class="btn preview-btn" [disabled]="true">
+                    Pregunta al cliente</button></div>
+            <div class="p-2 px-4"><button type="button" class="btn preview-btn" [disabled]="true">
+                    ¡Envía tu propuesta!</button></div>
+        </div>
+    </div>
+</div>

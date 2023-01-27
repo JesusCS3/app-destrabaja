@@ -1,0 +1,42 @@
+/* customized hr */
+hr {
+    border: 1px solid #54C8E8;
+    opacity: 1;
+}
+
+/* customized service-description */
+.service-description label{
+    color: #425CC7;
+    font-weight: bold;
+}
+
+.service-description span{
+    color: #425CC7;
+}
+
+.service-description textarea{
+    border: 1px solid #54C8E8;
+    border-radius: 0.8rem;
+    box-shadow: none;
+}
+
+/* custom save button */
+.save-btn {
+    border-radius: 2rem;
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #425CC7;
+    --bs-btn-border-color: #425CC7;
+    --bs-btn-hover-color: #425CC7;
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: #425CC7;
+    --bs-btn-focus-shadow-rgb: 66, 70, 73;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #425CC7;
+    --bs-btn-active-border-color: #425CC7;
+    --bs-btn-active-shadow: inset 0 3px 5px #425CC7;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #425CC7;
+    --bs-btn-disabled-border-color: #425CC7;
+    --bs-btn-focus-box-shadow: 0 0 0 0.25rem #425CC7;
+    box-shadow: none;
+}

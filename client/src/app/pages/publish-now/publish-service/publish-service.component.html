@@ -1,0 +1,74 @@
+<div class="container-fluid col-12 header-space">
+    <!-- information template to publish a service -->
+    <div class="row publish-service pb-5" *ngIf="!preview; else previewTemplate">
+        <div class="title-service">
+            <h3><strong>Publica un servicio</strong>
+                <hr class="underline-publish-service">
+            </h3>
+        </div>
+        <div class="row publish-service-info col-11 bg-form">
+            <div class="col-11 ">
+                <div>
+                    <app-general-info-service></app-general-info-service>
+                    <app-description-service></app-description-service>
+                    <app-levels-service></app-levels-service>
+                    <app-extras-service></app-extras-service>
+                    <app-requirements-service></app-requirements-service>
+                </div>
+                <div class="preview-info-btn">
+                    <button type="button" class="btn publish-btn"
+                    (click)="servicePreview(); scrollTop(); receiveInfo()">Previsualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preview template to publish a service -->
+    <ng-template #previewTemplate>
+        <div *ngIf="!confirm; else confirmTemplate">
+            <div class="row publish-service pb-5">
+                <div class="title-service">
+                    <h3><strong>Previsualización</strong>
+                        <hr class="underline-preview">
+                    </h3>
+                </div>
+                <div class="row publish-service-info col-11 bg-form">
+                    <div class="col-11">
+                        <app-preview></app-preview>
+                    </div>
+                    <div class="preview-btns">
+                        <button class="btn publish-btn" type="button" (click)="editService(); scrollTop()">
+                            Regresar y editar
+                        </button>
+                        <button type="button" class="btn publish-btn" 
+                        (click)="confirmService(); scrollTop()">
+                            ¡Publicar!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <!-- confirmation template publish a service -->
+    <ng-template #confirmTemplate>
+        <div class="row publish-service pb-5">
+            <div class="title-service">
+                <h3><strong>Confirmación</strong>
+                    <hr class="underline-confirm">
+                </h3>
+            </div>
+            <div class="row publish-service-info col-11 bg-form">
+                <div class="col-11">
+                    <app-confirm></app-confirm>          
+                </div>
+                <div class="confirm-btns">
+                    <button class="btn publish-btn" type="button" (click)="clearData()" routerLink="/publish-now">
+                        Publicar otro servicio
+                    </button>
+                    <button type="button" class="btn publish-btn" (click)="clearData()" routerLink="/profile">
+                        Terminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

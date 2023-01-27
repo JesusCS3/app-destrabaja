@@ -1,0 +1,51 @@
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    /*font-family: Arial, Helvetica, sans-serif;*/
+}
+
+/***** company colors *****/
+
+/* primary color */
+.first-color-blue {
+    color: #425CC7 !important;
+}
+
+/* secondary colors */
+
+.yellow-color {
+    color: #FFC600 !important;
+}
+
+.second-color-blue {
+    color: #54C8E8 !important;
+}
+
+.orange-color {
+    color: #FF4713 !important;
+}
+
+/* Additional color */
+
+.third-color-blue {
+    color: #21145F !important;
+}
+
+/* header space */
+.header-space {
+    margin-top: 9rem !important;
+    margin-bottom: 2rem !important;
+}
+
+/* custom question button */
+.question-btn {
+    color: #425CC7;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}

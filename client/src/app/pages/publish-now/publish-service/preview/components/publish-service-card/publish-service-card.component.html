@@ -1,0 +1,44 @@
+<!-- service card -->
+<div class="mt-5">
+  <div class="card-service shadow-lg">
+    <div class="card-service-header">
+      <div id="carouselServiceCard" class="carousel slide carousel-fade" data-bs-interval="false">
+        <div class="carousel-inner">
+          <div class="carousel-item active" *ngIf="previewVideo">
+            <video [src]="previewVideo" controls></video>
+          </div>
+          <div class="carousel-item" *ngIf="previewImg">
+            <img [src]="previewImg" alt="preview-img-service" />
+          </div>
+          <div class="carousel-item" *ngIf="previewImgTwo">
+            <img [src]="previewImgTwo" alt="preview-img-service" />
+          </div>
+          <div class="carousel-item" *ngIf="previewImgThree">
+            <img [src]="previewImgThree" alt="preview-img-service" />
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselServiceCard" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselServiceCard" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
+      </div>          
+    </div>
+    <div class="card-service-body">
+      <h5>{{nameService}}</h5>
+      <p id="description">{{shortDescription}}</p>
+      <div id="priceRow" class="row">
+        <div id="price" class="">
+          <p>Desde: {{priceClientInitialPlan | currency:'MNX':'$':'1.0-0'}}</p>
+        </div>
+        <div id="score" class="text-end">
+          <p><i class="bi bi-star-fill yellow-color pe-1"></i> {{score}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,54 @@
+<div class="container-fluid col-xl-12 header-space edit-account">
+    <div class="col-12 col-md-9 col-xl-5 shadow-lg edit-account-form">
+        <form #editAccount="ngForm" novalidate (ngSubmit)="editAccount.form.valid && updateUser(update)">
+            <div>
+                <h5 class="text-center">Editar cuenta</h5>
+            </div>
+            <!-- update user data -->
+            <div class="col-9 col-md-8 col-lg-8 form-fields">
+                <div class="mb-3">
+                    <div>
+                        <input type="text" class="form-control" name="username" id="username" #username="ngModel"
+                            placeholder="Nombre de usuario" maxlength="30"
+                            [(ngModel)]='user.username' required>
+                    </div>
+                    <span class="invalid-fields" *ngIf="!username.value && username.touched">
+                        * Campo obligatorio.
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <div>
+                        <input type="email" class="form-control" name="email" id="email" #email="ngModel" 
+                        placeholder="Correo electrónico" [email]="true"
+                        [(ngModel)]='user.email' required>
+                        <span class="invalid-fields" *ngIf="!email.value && email.touched">
+                            * Campo obligatorio.
+                        </span>
+                        <span class="invalid-fields" *ngIf="!email.valid">
+                            Ingresa un formato correcto de email.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9 col-md-8 col-lg-8 form-fields">
+                <button class="btn btn-outline-dark mb-4 updateAccount" 
+                    type="submit" [disabled]="!editAccount.valid">
+                    Actualizar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- update message -->
+<ng-template #update let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title">Editar cuenta</h4>
+	</div>
+	<div class="modal-body">
+		<p>{{updateMsg}}</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cerrar</button>
+	</div>
+</ng-template>

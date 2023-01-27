@@ -1,0 +1,14 @@
+/* customized profile tabs */
+.nav-link {
+    color: #425CC7 !important;
+    transition: none;
+}
+
+.nav-link.active {
+    color: #54C8E8 !important;
+    border: none !important;
+}
+
+.nav-tabs{
+    border-bottom: 3px solid #54C8E8;
+}

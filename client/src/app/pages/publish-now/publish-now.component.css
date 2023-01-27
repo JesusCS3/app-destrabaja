@@ -1,0 +1,43 @@
+/* customized publication cards */
+.publication-card{
+    width: 30rem;
+    height: auto; 
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+.publication-card a{
+    text-decoration: none !important;
+}
+
+.publication-card #card-title{
+    background-color: #425CC7;
+    color: #fff;
+}
+
+.publication-card #card-title:hover{
+    background-color: #425dc7e0;
+    color: #fff;
+}
+
+.card-img-bottom {
+    width: 100%;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+/* customized hr */
+hr {
+    border: 1px solid #54C8E8;
+    opacity: 0.8;
+}
+
+/* Dispositivos pequeños */
+@media (min-width: 375px) and (max-width: 768px) {
+    .publication-card{
+        width: 21rem;
+    }
+ }
+

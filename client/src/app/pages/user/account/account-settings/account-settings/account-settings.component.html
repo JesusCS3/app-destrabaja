@@ -1,0 +1,61 @@
+<div class="container-fluid col-xl-12 header-space account-settings">
+    <div class="col-xl-3 col-md-5 col-11 settings shadow-lg rounded">
+        <div>
+            <h3><strong>Configuraciones</strong>
+                <hr class="underline-settings">
+            </h3>
+        </div>
+        <div>
+            <!-- account settings -->
+            <table class="account-settings-table mb-3">
+                <thead>
+                    <tr>
+                        <th>Cuenta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><i class="bi bi-person pe-2"></i>{{identity.username}}</th>
+                    </tr>
+                    <tr>
+                        <th><i class="bi bi-envelope pe-2"></i>{{identity.email}}</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="bi bi-pencil-square pe-2"></i>
+                            <a  class="settings-link" routerLink="/edit-account">Editar cuenta</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="bi bi-shield-lock pe-2"></i>
+                            <a class="settings-link" >Modificar contraseña</a>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- profile settings -->
+            <table class="profile-settings-table mb-5">
+                <thead>
+                    <tr>
+                        <th>Perfil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>
+                            <i class="bi bi-person-check-fill pe-2"></i>
+                            <a class="settings-link" routerLink="/profile-settings">Completar registro</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i class="bi bi-pencil-square pe-2"></i>
+                            <a class="settings-link" routerLink="/edit-profile-settings">Editar perfil</a>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

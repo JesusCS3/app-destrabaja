@@ -1,0 +1,52 @@
+<!-- project card -->
+<div class="mt-5">
+    <div class="card-service shadow-lg">
+        <div class="card-service-header">
+          <div id="carouselProjectCard" class="carousel slide carousel-fade" data-bs-interval="false">
+            <div class="carousel-inner">
+              <div class="carousel-item active" *ngIf="previewVideo">
+                <video [src]="previewVideo" controls></video>
+              </div>
+              <div class="carousel-item" *ngIf="previewImg">
+                <img [src]="previewImg" alt="preview-img-service" />
+              </div>
+              <div class="carousel-item" *ngIf="previewImgTwo">
+                <img [src]="previewImgTwo" alt="preview-img-service" />
+              </div>
+              <div class="carousel-item" *ngIf="previewImgThree">
+                <img [src]="previewImgThree" alt="preview-img-service" />
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjectCard" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselProjectCard" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-service-body">
+            <h5>{{nameProject}}</h5>
+            <p id="description">{{shortDescription}}</p>
+            <div id="publishedRow" class="row">
+                <div id="publishedIcon">
+                    <div id="iconsRow">
+                        <div id="iconSeen" class="pe-3">
+                            <i class="bi bi-eye-fill pe-3"></i>
+                            <span>-</span>
+                        </div>
+                        <div id="iconPerson" class="pe-3">
+                            <i class="bi bi-person-fill pe-3"></i>
+                            <span>-</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="published" class="text-end">
+                    <p>Publicado </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

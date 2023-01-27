@@ -1,0 +1,54 @@
+<!-- profile tabs -->
+<div class="container-fluid row justify-content-md-center col-12 header-space">
+  <div class="align-items-start col-12 col-md-11 col-lg-10">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
+          type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="true">Tu perfil</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="favorites-tab" data-bs-toggle="tab" data-bs-target="#favorites-tab-pane"
+          type="button" role="tab" aria-controls="favorites-tab-pane" aria-selected="false">Tus favoritos</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects-tab-pane"
+          type="button" role="tab" aria-controls="projects-tab-pane" aria-selected="false">Tus proyectos</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="services-published-tab" data-bs-toggle="tab"
+          data-bs-target="#services-published-tab-pane" type="button" role="tab"
+          aria-controls="services-published-tab-pane" aria-selected="false">Tus servicios</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button"
+          role="tab" aria-controls="finance-tab-pane" aria-selected="false">Tus finanzas</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="referred-tab" data-bs-toggle="tab" data-bs-target="#referred-tab-pane"
+          type="button" role="tab" aria-controls="referred-tab-pane" aria-selected="false">Referidos</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+        tabindex="0">
+        <app-profile-information></app-profile-information>
+      </div>
+      <div class="tab-pane fade" id="favorites-tab-pane" role="tabpanel" aria-labelledby="favorites-tab" tabindex="0">
+        <app-favorites></app-favorites>
+      </div>
+      <div class="tab-pane fade" id="projects-tab-pane" role="tabpanel" aria-labelledby="projects-tab" tabindex="0">
+        <app-projects></app-projects>
+      </div>
+      <div class="tab-pane fade" id="services-published-tab-pane" role="tabpanel"
+        aria-labelledby="services-published-tab" tabindex="0">
+        <app-services-published></app-services-published>
+      </div>
+      <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0">
+        <app-finance></app-finance>
+      </div>
+      <div class="tab-pane fade" id="referred-tab-pane" role="tabpanel" aria-labelledby="referred-tab" tabindex="0">
+        <app-referred></app-referred>
+      </div>
+    </div>
+  </div>
+</div>

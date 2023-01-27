@@ -1,0 +1,30 @@
+/* customized hr */
+hr {
+    border: 1px solid #54C8E8;
+    opacity: 1;
+}
+
+/* customized form */
+.bg-form{
+    border: 1px solid #bebebe;
+    box-shadow: -1px -1px 10px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* custom button save and preview*/
+.publish-btn {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #425CC7;
+    --bs-btn-border-color: #425CC7;
+    --bs-btn-hover-color: #425CC7;
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: #425CC7;
+    --bs-btn-focus-shadow-rgb: 66, 70, 73;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #425CC7;
+    --bs-btn-active-border-color: #373b3e;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #425CC7;
+    --bs-btn-disabled-border-color: #425CC7;
+    border-radius: 2rem;
+}

@@ -1,0 +1,203 @@
+<div class="row justify-content-center col-12 bg-form">
+    <div class="service-screen">
+        <div class="col-xl-12">
+            <div class="row pt-3 p-3">
+                <!-- preview images and video for service-->
+                <div class="col-xl-4">
+                    <div class="card-service shadow-img">
+                        <div class="card-service-header">
+                            <div id="carouselServiceScreen" class="carousel slide carousel-fade" data-bs-interval="false">
+                                <div class="carousel-inner">
+                                  <div class="carousel-item active" *ngIf="previewVideo">
+                                    <video [src]="previewVideo" controls></video>
+                                  </div>
+                                  <div class="carousel-item" *ngIf="previewImg">
+                                    <img [src]="previewImg" alt="preview-img-service" />
+                                  </div>
+                                  <div class="carousel-item" *ngIf="previewImgTwo">
+                                    <img [src]="previewImgTwo" alt="preview-img-service" />
+                                  </div>
+                                  <div class="carousel-item" *ngIf="previewImgThree">
+                                    <img [src]="previewImgThree" alt="preview-img-service" />
+                                  </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselServiceScreen" data-bs-slide="prev">
+                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Anterior</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselServiceScreen" data-bs-slide="next">
+                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Siguiente</span>
+                                </button>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-8">
+                    <h5 class="first-color-blue"><strong>{{nameService}}</strong></h5>
+                    <p class="second-color-blue">{{shortDescription}}</p>
+                    <!-- modal to display the long description of the service -->
+                    <ng-template #longContent let-modal>
+                        <button type="button" class="btn modal-close position-absolute top-0 start-100"
+                            aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <i class="bi bi-x-lg"></i></button>
+                        <div class="modal-body">
+                            <p style="white-space: pre-line">
+                                {{longDescription}}
+                            </p>
+                        </div>
+                    </ng-template>
+
+                    <button class="btn modal-btn" (click)="openScrollableContent(longContent)">
+                       <strong>Consulta más detalles del servicio</strong> 
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- table service screen -->
+        <div class="table-info">
+            <table class="table-service-screen">
+                <thead>
+                    <tr id="plans">
+                        <th data-label="Planes"></th>
+                        <th class="initial">
+                            {{initialPlanName}}
+                        </th>
+                        <th class="plus" *ngIf="plusPlanName">
+                            {{plusPlanName}}
+                        </th>
+                        <th class="premium" *ngIf="premiumPlanName">
+                            {{premiumPlanName}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="deliverables" *ngFor="let deliverable of deliverables">
+                        <th class="deliverables">
+                            {{deliverable.name}}
+                        </th>
+                        <td class="initial">
+                            <div>
+                                <input class="form-check-input" type="checkbox" id="checkboxDeliverableInitialPlan"
+                                    [(ngModel)]="deliverable.initialPlan" [disabled]="true">
+                            </div>
+                        </td>
+                        <td class="plus" *ngIf="plusPlanName">
+                            <div>
+                                <input class="form-check-input" type="checkbox" id="checkboxDeliverablePlusPlan"
+                                    [(ngModel)]="deliverable.plusPlan" [disabled]="true">
+                            </div>
+                        </td>
+                        <td class="premium" *ngIf="premiumPlanName">
+                            <div>
+                                <input class="form-check-input" type="checkbox" id="checkboxDeliverablePremiumPlan"
+                                    [(ngModel)]="deliverable.premiumPlan" [disabled]="true">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="features">
+                        <th class="features">Tiempo de entrega</th>
+                        <td class="initial">
+                            {{deliveryTimeInitialPlan}} <span>días hábiles</span>
+                        </td>
+                        <td class="plus" *ngIf="plusPlanName">
+                            {{deliveryTimePlusPlan}} <span>días hábiles</span>
+                        </td>
+                        <td class="premium" *ngIf="premiumPlanName">
+                            {{deliveryTimePremiumPlan}} <span>días hábiles</span>
+                        </td>
+                    </tr>
+                    <tr id="comments">
+                        <th class="features">Comentarios</th>
+                        <td class="initial">
+                            {{commentInitialPlan}}
+                        </td>
+                        <td class="plus" *ngIf="plusPlanName">
+                            {{commentPlusPlan}}
+                        </td>
+                        <td class="premium" *ngIf="premiumPlanName">
+                            {{commentPremiumPlan}}
+                        </td>
+                    </tr>
+                    <tr id="prices">
+                        <th class="features">Precio MXN <br><span style="font-size: 0.5rem;">(incluye IVA y
+                                comisión de compra)</span></th>
+                        <td class="initial">
+                            {{priceClientInitialPlan | currency:'MNX':'$':'1.0-0'}}
+                        </td>
+                        <td class="plus" *ngIf="plusPlanName">
+                            {{priceClientPlusPlan | currency:'MNX':'$':'1.0-0'}}
+                        </td>
+                        <td class="premium" *ngIf="premiumPlanName">
+                            {{priceClientPremiumPlan | currency:'MNX':'$':'1.0-0'}}
+                        </td>
+                    </tr>
+                    <tr id="extras" *ngFor="let extras of extraService">
+                        <th class="extras-service">{{extras.nameExtra}}</th>
+                        <td class="initial" *ngIf="!extras.initialPlanExtra else extrasTemplate">
+                        </td>
+                        <ng-template #extrasTemplate>
+                            <td class="initial">
+                                {{extras.deliveryTimeExtra}} <span>días hábiles por </span>
+                                {{extras.priceClientExtra | currency:'MNX':'$':'1.0-0'}}
+                            </td>
+                        </ng-template>
+                        <td class="plus" *ngIf="!extras.plusPlanExtra && plusPlanName else extrasPlusTemplate"></td>
+                        <ng-template #extrasPlusTemplate>
+                            <td class="plus" *ngIf="extras.plusPlanExtra && plusPlanName">
+                                {{extras.deliveryTimeExtraPlus}} <span>días hábiles por </span>
+                                {{extras.priceClientExtraPlus | currency:'MNX':'$':'1.0-0'}}
+                            </td>
+                        </ng-template>
+                        <td class="premium" *ngIf="!extras.premiumPlanExtra && premiumPlanName else extrasPremiumTemplate">
+                        </td>
+                        <ng-template #extrasPremiumTemplate>
+                            <td class="premium" *ngIf="extras.premiumPlanExtra && premiumPlanName">
+                                {{extras.deliveryTimeExtraPremium}} <span>días hábiles por </span>
+                                {{extras.priceClientExtraPremium | currency:'MNX':'$':'1.0-0'}}
+                            </td>
+                        </ng-template>
+                    </tr>
+                    <tr id="btns">
+                        <th>Contratar</th>
+                        <td class="initial">
+                            <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
+                        </td>
+                        <td class="plus" *ngIf="plusPlanName">
+                            <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
+                        </td>
+                        <td class="premium" *ngIf="premiumPlanName">
+                            <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="p-3 included-info">
+                <ul class="included">
+                    <li>
+                        <input class="deliverables-included" readonly>
+                        <span id="included" class="ps-2">Entregables incluidos</span>
+                    </li>
+                    <li>
+                        <input class="features-included" readonly>
+                        <span id="included" class="ps-2">Características</span>
+                    </li>
+                    <li>
+                        <input class="extras-included" readonly>
+                        <span id="included" class="ps-2">Extras</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="contact-btns">
+            <button class="btn preview-btn" type="button" [disabled]="true">
+                Visita mi perfil
+            </button>
+            <button type="button" class="btn preview-btn" [disabled]="true">
+                ¡Contáctame!
+            </button>
+        </div>
+    </div>
+</div>
+
+

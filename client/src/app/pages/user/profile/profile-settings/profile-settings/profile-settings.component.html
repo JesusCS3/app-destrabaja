@@ -1,0 +1,417 @@
+<section>
+    <div class="container-fluid col-xl-12 header-space">
+        <div class="profile">
+            <div class="col-xl-10 col-md-10 col-10 profile-settings">
+                <div id="title-profile-settings">
+                    <h2><strong>Completa tu registro</strong></h2>
+                </div>
+                <form #profileSettingsForm="ngForm" 
+                (ngSubmit)="profileSettingsForm.form.valid && saveProfile(profileMessage, profileSettingsForm)">
+                    <div *ngIf="!firstPart; else secondPartTemplate">
+                        <div class="row align-items-center form-profile pt-5">
+                            <div class="col-xl-3 col-md-12 center-profile-img">
+                                <!-- capturing images for profile -->
+                                <div class="previewFileProfile">
+                                    <div *ngIf="!previewImg; else previewImgtemplate">
+                                        <div class="img-ico">
+                                            <p>Da clic para agregar tu foto de perfil</p>
+                                        </div>
+                                    </div>
+                                    <!-- preview images for profile-->
+                                    <ng-template #previewImgtemplate>
+                                        <div class="previewImageProfile">
+                                            <div class="previewHeaderProfile">
+                                                <div *ngIf="previewImg">
+                                                    <img [src]="previewImg" alt="preview-profile-img" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                    <!-- buttons to add and delete file -->
+                                    <div class="btns-SendFile">
+                                        <div class="btns-file">
+                                            <div class="btn-add">
+                                                <div class="sendFile">
+                                                    <i class="bi bi-person-plus-fill add"></i>
+                                                    <input type="file" class="addFile" id="profileImg" name="profileImg" 
+                                                    #profileImg="ngModel" [(ngModel)]='profileSettings.profileImg'
+                                                    accept="image/*" (change)="captureFileImg($event); imgChangeEvent($event)">
+                                                </div>
+                                            </div>
+                                            <div class="btn-delete">
+                                                <div class="deleteFile">
+                                                    <i class="bi bi-person-dash-fill delete"
+                                                    (click)="deletePreviewImages()"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-5">
+                                <div class=" form-floating mb-3">
+                                    <input type="text" class="form-control" name="name" id="name" #name="ngModel"
+                                        [(ngModel)]='profileSettings.name' placeholder="Nombre" required>
+                                    <label for="name">Nombre(s)</label>
+                                    <span class="invalid-fields" *ngIf="!name.value && name.touched">
+                                        * Campo obligatorio.
+                                    </span>
+                                </div>
+                                <div class=" form-floating mb-3">
+                                    <input type="text" class="form-control" name="fatherLastName" id="fatherLastName"
+                                        #fatherLastName="ngModel" [(ngModel)]='profileSettings.fatherLastName'
+                                        placeholder="Apellido Paterno" required>
+                                    <label for="fathersLastName">Apellido Paterno</label>
+                                    <span class="invalid-fields" *ngIf="!fatherLastName.value && fatherLastName.touched">
+                                        * Campo obligatorio.
+                                    </span>
+                                </div>
+                                <div class=" form-floating mb-3">
+                                    <input type="text" class="form-control" name="motherLastName" id="motherLastName"
+                                        #motherLastName="ngModel" [(ngModel)]='profileSettings.motherLastName'
+                                        placeholder="Apellido Materno" required>
+                                    <label for="motherLastName">Apellido Materno</label>
+                                    <span class="invalid-fields" *ngIf="!motherLastName.value && motherLastName.touched">
+                                        * Campo obligatorio.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-5">
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="gender" name="gender" #gender="ngModel"
+                                    [(ngModel)]="profileSettings.gender" required>
+                                        <option selected disabled>Género</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                        <option value="Prefiero no decirlo">Prefiero no decirlo</option>
+                                    </select>
+                                    <label for="contry">Género</label>
+                                    <span class="invalid-fields" *ngIf="!gender.value && gender.touched">
+                                        * Campo obligatorio.
+                                    </span>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="date" class="form-control" id="dateBirth" name="dateBirth" #dateBirth="ngModel"
+                                    [(ngModel)]='profileSettings.dateBirth'
+                                    placeholder="Fecha de nacimiento" required>
+                                    <label for="dateBirth">Fecha de nacimiento</label>
+                                    <span class="invalid-fields" *ngIf="!dateBirth.value && dateBirth.touched">
+                                        * Campo obligatorio.
+                                    </span>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-xl-6 col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <select class="form-select" id="contry" name="contry" #contry="ngModel"
+                                            [(ngModel)]="profileSettings.contry" required>
+                                            <option selected disabled>País</option>
+                                            <option value="México">México</option>
+                                            <option value="EU">EU</option>
+                                            <option value="Canada">Canada</option>
+                                            </select>
+                                            <label for="contry">País</label>
+                                            <span class="invalid-fields" *ngIf="!contry.value && contry.touched">
+                                                * Campo obligatorio.
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <select class="form-select" id="city" name="city" #city="ngModel"
+                                            [(ngModel)]="profileSettings.city" required>
+                                            <option selected disabled>Ciudad</option>
+                                            <option value="Hidalgo">Hidalgo</option>
+                                            <option value="México">México</option>
+                                            <option value="Ciudad de México">Ciudad de México</option>
+                                            </select>
+                                            <label for="city">Ciudad</label>
+                                            <span class="invalid-fields" *ngIf="!city.value && city.touched">
+                                                * Campo obligatorio.
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="next-register">
+                            <button type="button" class="btn next-btn"
+                            (click)="registerFirstPart()" [disabled]="!profileSettingsForm.valid">Siguiente</button>
+                        </div>
+                    </div>
+                    <!-- second part of the register -->
+                    <ng-template #secondPartTemplate>
+                        <div *ngIf="!secondPart; else thirdTemplate">
+                            <div class="form-profile">
+                                <div class="col-xl-11 col-md-10">
+                                    <div class="mb-3 resumesummary">
+                                        <label for="resumeSummary" id="label-resumeSummary" class="form-label pe-2">
+                                            <strong>Redacta tu carta de presentación</strong>
+                                        </label>
+                                        <button type="button" class="question-btn" placement="bottom"
+                                        ngbTooltip="Esto te sirve para explicar cómo tu experiencia y tu visión te ayudarán
+                                        a desempeñar con éxito tu trabajo. Recuerda que la carta de presentación debe ser
+                                        corta y concisa." 
+                                        tooltipClass="my-custom-class">
+                                        <i class="bi bi-question-circle-fill "></i>
+                                        </button>
+                                        <textarea class="form-control" id="resumeSummary"
+                                        name="resumeSummary" #resumeSummary="ngModel"
+                                        [(ngModel)]="profileSettings.resumeSummary"
+                                        (keyup)="resumeSummaryCount($event)"
+                                        maxlength="1500"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- counting characters for short description -->
+                            <div class="count-characters">
+                                <div><span>Máximo 1500 caracteres.</span></div>
+                                <div #counter>
+                                    <span>{{counterResumeSummary}} de 1500 caracteres.</span>
+                                </div>
+                            </div>
+                            <div class="btns-record">
+                                <button class="btn next-btn" type="button" (click)="backFirstPart()">
+                                    Atrás
+                                </button>
+                                <button type="button" class="btn next-btn" (click)="registerSecondPart()">
+                                    Siguiente
+                                </button>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <!-- third part of the register -->
+                    <ng-template #thirdTemplate>
+                        <div *ngIf="!thirdPart; else fourthTemplate">
+                            <div class="row form-profile profile-files">
+                                <div class="col-xl-6 col-md-12">
+                                    <div class="mb-3 resumesummary">
+                                        <label for="resumeSummary" id="label-resumeSummary" class="form-label pe-2">
+                                            <strong>Agrega tu Video CV</strong>
+                                        </label>
+                                        <button type="button" class="question-btn" placement="bottom"
+                                        ngbTooltip="NOTA: El video CV no deberá pesar más de 50 Mb." 
+                                        tooltipClass="my-custom-class">
+                                        <i class="bi bi-question-circle-fill "></i>
+                                        </button>
+                                    </div>
+                                    <!-- preview video file -->
+                                    <div>
+                                        <!-- capturing video for profile -->
+                                        <div class="previewFileVideo">
+                                            <div *ngIf="!urlFile; else previewVideotemplate">
+                                                <div class="video-ico">
+                                                    <p>Da clic para sleccionar tu video CV</p>
+                                                </div>
+                                            </div>
+                                            <!-- preview video for profile-->
+                                            <ng-template #previewVideotemplate>
+                                                <div class="previewVideoFile">
+                                                    <div class="previewVideoHeader">
+                                                        <video [src]="urlFile" *ngIf="urlFile" controls></video>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                            <!-- buttons to add and delete file -->
+                                            <div class="btns-SendVideoFile">
+                                                <div class="btns-video-file">
+                                                    <div class="btn-add-video">
+                                                        <div class="sendVideoFile">
+                                                            <i class="bi bi-camera-video-fill add-video"></i>
+                                                            <input type="file" class="addVideoFile"  id="profileVideo" 
+                                                            name="profileVideo" #profileVideo="ngModel"
+                                                            [(ngModel)]="profileSettings.profileVideo" accept="video/*"
+                                                            (change)="onSelectFile($event); videoChangeEvent($event)">
+                                                        </div>
+                                                    </div>
+                                                    <div class="btn-delete-video">
+                                                        <div class="deleteVideoFile">
+                                                            <i class="bi bi-camera-video-off-fill delete-video"
+                                                            (click)="deletePreviewVideo()"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="mb-3 text-center">
+                                        <label for="resumeSummaryFile" id="label-resumeSummary-file" class="form-label pe-2">
+                                            <strong>Agrega tu CV</strong>
+                                        </label>
+                                        <button type="button" class="question-btn" placement="bottom"
+                                        ngbTooltip="NOTA: El CV debe cargarse en formato PDF." 
+                                        tooltipClass="my-custom-class">
+                                        <i class="bi bi-question-circle-fill "></i>
+                                        </button>
+                                    </div>
+                                    <div class="pdf-profile">
+                                        <!-- preview cv file -->
+                                        <div>
+                                            <!-- capturing cv for profile -->
+                                            <div class="previewPdfFile">
+                                                <div *ngIf="!profileSettings.resumeSummaryFile; else previewCVtemplate">
+                                                    <i class="bi bi-paperclip" id="clip"></i>
+                                                    <p id="text-file">CV</p>
+                                                </div>
+                                                <!-- preview cv for profile-->
+                                                <ng-template #previewCVtemplate>
+                                                    <div>
+                                                        <img src="./assets/img/publish-now/pdf.svg" alt="pdf" id="pdf">
+                                                        <p id="text-pdf">Agregado</p>
+                                                    </div>
+                                                </ng-template>
+                                                <!-- buttons to add and delete file -->
+                                                <div class="btns-SendPdfFile">
+                                                    <div class="btns-pdf-file">
+                                                        <div class="btn-add-pdf">
+                                                            <div class="sendPdfFile">
+                                                                <i class="bi bi-file-earmark-plus-fill add-pdf"></i>
+                                                                <input type="file" class="addPdfFile" id="resumeSummaryFile"
+                                                                    name="resumeSummaryFile" #resumeSummaryFile="ngModel"
+                                                                    [(ngModel)]="profileSettings.resumeSummaryFile" 
+                                                                    (change)="resumesummaryFileChangeEvent($event)"
+                                                                    accept="application/pdf">
+                                                            </div>
+                                                        </div>
+                                                        <div class="btn-delete-pdf">
+                                                            <div class="deletePdfFile">
+                                                                <i class="bi bi-file-earmark-minus-fill delete-pdf"
+                                                                (click)="deleteResumeSummaryFile()"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="mb-3 text-center">
+                                        <label for="previousWork" id="label-preview-works" 
+                                        class="form-label">
+                                            <strong>Agrega muestras de tu trabajo previo</strong>
+                                            <span type="button" class="question-btn ps-2" placement="bottom"
+                                            ngbTooltip="NOTA: Las muestras de tus trabajos previos 
+                                            deben cargarse en formato PDF." 
+                                            tooltipClass="my-custom-class">
+                                            <i class="bi bi-question-circle-fill "></i>
+                                        </span>
+                                        </label>
+                                    </div>
+                                    <div class="pdf-profile">
+                                        <!-- preview works file -->
+                                        <div>
+                                            <!-- capturing preview work for profile -->
+                                            <div class="previewPdfFile">
+                                                <div *ngIf="!profileSettings.previousWork; else previewCVtemplate">
+                                                    <i class="bi bi-paperclip" id="clip"></i>
+                                                    <p id="text-file">Trabajo previo</p>
+                                                </div>
+                                                <!-- preview works for profile-->
+                                                <ng-template #previewCVtemplate>
+                                                    <div>
+                                                        <img src="./assets/img/publish-now/pdf.svg" alt="pdf" id="pdf">
+                                                        <p id="text-pdf">Agregado</p>
+                                                    </div>
+                                                </ng-template>
+                                                <!-- buttons to add and delete file -->
+                                                <div class="btns-SendPdfFile">
+                                                    <div class="btns-pdf-file">
+                                                        <div class="btn-add-pdf">
+                                                            <div class="sendPdfFile">
+                                                                <i class="bi bi-file-earmark-plus-fill add-pdf"></i>
+                                                                <input type="file" class="addPdfFile" id="previousWork"
+                                                                name="previousWork" #previousWork="ngModel" accept="application/pdf"
+                                                                [(ngModel)]="profileSettings.previousWork"
+                                                                (change)="previousWorkChangeEvent($event)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="btn-delete-pdf">
+                                                            <div class="deletePdfFile">
+                                                                <i class="bi bi-file-earmark-minus-fill delete-pdf"
+                                                                (click)="deletePreviousWork()"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btns-record">
+                                <button class="btn next-btn" type="button" (click)="backSecondPart()">
+                                    Atrás
+                                </button>
+                                <button type="button" class="btn next-btn" (click)="registerThirdPart()">
+                                    Siguiente
+                                </button>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <!-- fourth part of the register -->
+                    <ng-template #fourthTemplate>
+                        <div>
+                            <div class="row align-items-center form-profile pt-5">
+                                <div class="col-xl-4 col-md-5">
+                                    <label for="previousWork" id="label-preview-works" 
+                                    class="form-label">
+                                        <strong>Agregar RFC</strong>
+                                        <span type="button" class="question-btn ps-2" placement="bottom"
+                                        ngbTooltip="NOTA: Debes agregar tu RFC para publicar algún servicio o proyecto en destrabaja." 
+                                        tooltipClass="my-custom-class">
+                                        <i class="bi bi-question-circle-fill "></i>
+                                    </span>
+                                    </label>
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="publishCheck" name="publishCheck" #publishCheck="ngModel"
+                                        [(ngModel)]="profileSettings.publishCheck" (click)="rfcData($event)" required>
+                                            <option selected disabled>¿vas a publicar algún servicio o proyecto?</option>
+                                            <option value="publish">Sí</option>
+                                            <option value="nopublish">No</option>
+                                        </select>
+                                        <label for="rfcCheck">¿vas a publicar algún servicio o proyecto?</label>
+                                        <span class="invalid-fields" *ngIf="!publishCheck.value && publishCheck.touched">
+                                            * Campo obligatorio.
+                                        </span>
+                                    </div>
+                                    <div class=" form-floating mb-3">
+                                        <input type="text" class="form-control" name="rfc" id="rfc" #rfc="ngModel"
+                                            [(ngModel)]='profileSettings.rfc' placeholder="RFC" 
+                                            minlength="10" maxlength="13" [required]="requiredData == false">
+                                        <label for="rfc">RFC</label>
+                                        <span class="invalid-fields" *ngIf="!rfc.value && rfc.touched">
+                                            * Debes ingresar tu RFC con o sin homoclave (10, 12 o 13 caracteres).
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btns-record">
+                                <button class="btn next-btn" type="button" (click)="backThirdPart()">
+                                    Atrás
+                                </button>
+                                <button type="submit" class="btn next-btn" [disabled]="!profileSettingsForm.valid">
+                                    Finalizar
+                                </button>
+                            </div> 
+                        </div>
+                    </ng-template>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- profile message -->
+<ng-template #profileMessage let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title">Perfil de usuario</h4>
+	</div>
+	<div class="modal-body">
+		<p>{{profileMsg}}</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cerrar</button>
+	</div>
+</ng-template>

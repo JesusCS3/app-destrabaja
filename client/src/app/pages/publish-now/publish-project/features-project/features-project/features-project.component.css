@@ -1,0 +1,40 @@
+/* customized hr */
+hr {
+    border: 1px solid #54C8E8;
+    opacity: 1;
+}
+
+/* customized features project */
+
+.features-project label{
+    color: #425CC7;
+    font-weight: bold;
+}
+
+.features-project input, .features-project select{
+    color:#425CC7;
+}
+
+.features-project input {
+    border: none;
+    border: 3px solid #54C8E8;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.deliveryDate{
+    border-bottom: 2px solid #54C8E8 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.features-project select{
+    border: 3px solid #54C8E8;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* disabled inputs */
+#deliveryDate:disabled{
+    background-color: #54C8E8 !important;
+}

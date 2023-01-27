@@ -1,0 +1,157 @@
+<div class="container-fluid pb-5">
+    <div class="row pt-5">
+        <div class="col-xl-2">
+           <div class="row justify-content-center">
+            <div class="col-8">
+                <button type="button" class="btn btn-edit" routerLink="/edit-profile-settings">
+                    <i class="bi bi-pencil-square"></i>
+                    Editar
+                </button>
+            </div>
+          </div>        
+        </div>
+        <div class="col-xl-2 my-3 me-3 profileImage">
+            <div *ngIf="!profileSettings.profileImg; else profileImgtemplate" class="profileImg">
+                <div>
+                    <span>Sin foto de perfil</span>
+                </div>
+            </div>
+            <!-- profile img -->
+            <ng-template #profileImgtemplate>
+                <div class="profileImg">
+                    <img src="{{url + 'get-img-profile/' + profileSettings.profileImg}}" alt="profile-img" />
+                </div>
+            </ng-template>
+        </div>
+        <div class="col-xl-6">
+            <div class="col-md-12 profile-container">
+                <table class="table">
+                    <thead class="d-none">
+                        <tr>
+                            <th scope="col">Campos</th>
+                            <th scope="col">Datos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Usuario</th>
+                            <td>{{identity.username}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Nombre</th>
+                            <td>{{profileSettings.name + ' ' + profileSettings.fatherLastName + ' ' + profileSettings.motherLastName}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Nacimiento</th>
+                            <td>{{profileSettings.dateBirth}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">País</th>
+                            <td>{{profileSettings.contry}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ciudad</th>
+                            <td>{{profileSettings.city}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Desde</th>
+                            <td>{{profileSettings.createdAt}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-12 text-left py-5">
+            <h4 class="first-color-blue ps-4"><strong>Información profesional</strong></h4>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <label class="first-color-blue pe-2" style="font-size:1.2em;">
+                        <strong>Tu carta de presentación</strong>
+                    </label>
+                    <button type="button" class="question-btn" placement="bottom"
+                    ngbTooltip="Esto te sirve para explicar cómo tu experiencia y tu visión te ayudarán
+                    a desempeñar con éxito tu trabajo. Recuerda que la carta de presentación debe ser
+                    corta y concisa." 
+                    tooltipClass="my-custom-class">
+                    <i class="bi bi-question-circle-fill "></i>
+                    </button>
+                </div>
+                <div class="row align-items-center resume mt-3 ms-1">
+                    <p style="white-space: pre-line">
+                        {{profileSettings.resumeSummary}}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 ps-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div>
+                            <label class="first-color-blue" style="font-size:1.2rem;">
+                                <strong>Tu CV</strong>
+                            </label>
+                        </div>
+                        <div>
+                            <div *ngIf="!profileSettings.resumeSummaryFile; else cvtemplate" class="profilePdf mt-3">
+                                <i class="bi bi-paperclip" id="clip"></i>
+                                <span id="text-file">CV</span>
+                            </div>
+                            <!-- profile cv -->
+                            <ng-template #cvtemplate>
+                                <div class="profilePdf mt-3">
+                                    <img src="./assets/img/publish-now/pdf.svg" alt="pdf" id="pdf">
+                                    <span id="text-pdf">Agregado</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <label class="first-color-blue" style="font-size:1.2rem;">
+                                <strong>Tus muestras</strong>
+                            </label>
+                        </div>
+                        <div>
+                            <div *ngIf="!profileSettings.previousWork; else previousWorktemplate" class="profilePdf mt-3">
+                                <i class="bi bi-paperclip" id="clip"></i>
+                                <span id="text-file">Trabajo previo</span>
+                            </div>
+                            <!-- profile previous work -->
+                            <ng-template #previousWorktemplate>
+                                <div class="profilePdf mt-3">
+                                    <img src="./assets/img/publish-now/pdf.svg" alt="pdf" id="pdf">
+                                    <span id="text-pdf">Agregado</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9 pt-5">
+                        <div>
+                            <label class="first-color-blue" style="font-size:1.2em;">
+                                <strong>Tu video CV</strong>
+                            </label>
+                        </div>
+                        <div class="mt-2">
+                            <div *ngIf="!profileSettings.profileVideo; else previewVideotemplate" class="profileVideo mt-3">
+                                <div>
+                                    <p>No has agregado tu video CV</p>
+                                </div>
+                            </div>
+                            <!-- profile video -->
+                            <ng-template #previewVideotemplate>
+                                    <div class="profileVideo mt-3">
+                                        <video src="{{url + 'get-video-profile/' + profileSettings.profileVideo}}"
+                                         *ngIf="profileSettings.profileVideo" controls></video>
+                                    </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

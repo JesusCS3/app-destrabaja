@@ -1,0 +1,180 @@
+/* customized profile container */
+.profile-container {
+    border: 1px solid #425CC7;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.profile-container th,
+.profile-container td {
+    color: #425CC7;
+    border-style: none;
+}
+
+/* customized hr */
+hr {
+    border: 2px solid #54C8E8;
+    opacity: 0.8;
+}
+
+/* custom edit button */
+.btn-edit {
+    border-top-right-radius: 0.5rem !important;
+    border-bottom-right-radius: 0.5rem !important;
+    border-top-left-radius: 0.5rem !important;
+    border-bottom-left-radius: 0.5rem !important;
+    --bs-btn-padding-x: 0.75rem !important;
+    --bs-btn-padding-y: 0rem !important;
+    --bs-btn-color: #425CC7;
+    --bs-btn-border-color: #425CC7;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #425CC7;
+    --bs-btn-hover-border-color: #425CC7;
+    --bs-btn-focus-shadow-rgb: 33, 37, 41;
+    --bs-btn-active-color: #425CC7;
+    --bs-btn-active-bg: #fff;
+    --bs-btn-active-border-color: #425CC7;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #425CC7;
+    --bs-btn-disabled-bg: transparent;
+    --bs-gradient: none;
+}
+
+/* customized img profile */
+.img-profile {
+    width: 150px;
+    height: 150px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid #425CC7;
+}
+
+/* *** profile image *** */
+.profileImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* *** preview image file *** */
+.profileImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    color: #425CC7;
+    background-color: transparent;
+    border: 1px solid #425CC7;
+}
+
+.profileImg img{
+    width: 148px;
+    height: 148px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* *** preview video file *** */
+.profileVideo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 250px;
+    -moz-border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    border-radius: 1rem;
+    color: #425CC7;
+    background-color: transparent;
+    border: 1px solid #54C8E8;
+}
+
+.profileVideo video{
+    width: 398px;
+    height: 248px;
+    -moz-border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    border-radius: 1rem;
+    object-fit: cover;
+} 
+
+/* *** preview pdf file *** */
+.profilePdf {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 150px;
+    height: 100px;
+    -moz-border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    border-radius: 1rem;
+    color: #425CC7;
+    background-color: transparent;
+    border: 1px solid #54C8E8;
+}
+
+.profilePdf #clip{
+    font-size: 2rem;
+}
+
+.profilePdf #pdf{
+    width: 2.8rem;
+}
+
+.profilePdf #text-pdf{
+    color:#FF4713;
+}
+
+/* customized table profile info */
+.table> :not(caption)>*>* {
+    padding: .1rem .5rem;
+}
+
+.table {
+    margin-top: 1rem;
+}
+
+/* customized resume  summary info */
+.resume{
+    border: 1px solid #54C8E8;
+    border-radius: 1rem;
+    height: auto;
+    color: #425CC7;
+    padding: 1rem;
+    text-align: justify;
+}
+
+/* customized btn-file */
+.btn-file{
+    border-top-right-radius: 1rem !important;
+    border-bottom-right-radius: 1rem !important;
+    border-top-left-radius: 1rem !important;
+    border-bottom-left-radius: 1rem !important;
+    font-size: 4rem;
+    --bs-btn-padding-x: 0.75rem !important;
+    --bs-btn-padding-y: 0rem !important;
+    --bs-btn-color: #425CC7;
+    --bs-btn-border-color: #fff;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #425CC7;
+    --bs-btn-hover-border-color: #425CC7;
+    --bs-btn-focus-shadow-rgb: 33, 37, 41;
+    --bs-btn-active-color: #425CC7;
+    --bs-btn-active-bg: #fff;
+    --bs-btn-active-border-color: #425CC7;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #425CC7;
+    --bs-btn-disabled-bg: transparent;
+    --bs-gradient: none;
+}

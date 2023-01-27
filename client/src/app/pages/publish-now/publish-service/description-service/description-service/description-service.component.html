@@ -1,0 +1,37 @@
+<!-- title service description -->
+<div class="col-12 col-md-5 col-xl-3 text-left pt-5">
+    <h5 class="first-color-blue"><strong>Descripción de tu servicio</strong>
+        <hr>
+    </h5>
+</div>
+<!-- input text for service description -->
+<div class="service-description">
+    <div class="mb-3">
+        <label for="shortDescription" class="form-label">Descripción corta para tu tarjeta de servicio</label>
+        <textarea class="form-control" id="shortDescription" name="shortDescription" rows="3" maxlength="150"
+            [(ngModel)]="shortDescription" (keyup)="shortDescriptionCount($event)"
+            (input)="sendShortDescription($event)"></textarea>
+        <!-- counting characters for short description -->
+        <div class="d-flex bd-highlight">
+            <div class="p-2 bd-highlight"><span>Máximo 150 caracteres.</span></div>
+            <div class="ms-auto p-2 bd-highlight" #counter>
+                <span>{{counterShortDescription}} de 150 caracteres.</span>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="longDescription" class="form-label">
+            Descripción larga para tu tarjeta de servicio (Opcional)
+        </label>
+        <textarea class="form-control" id="longDescription" name="longDescription" rows="3" maxlength="1500"
+            [(ngModel)]="longDescription" (keyup)="longDescriptionCount($event)"
+            (input)="sendLongDescription($event)"></textarea>
+        <!-- counting characters for long description -->
+        <div class="d-flex bd-highlight">
+            <div class="p-2 bd-highlight"><span>Máximo 1,500 caracteres.</span></div>
+            <div class="ms-auto p-2 bd-highlight">
+                <span>{{counterLongDescription}} de 1,500 caracteres.</span>
+            </div>
+        </div>
+    </div>
+</div>

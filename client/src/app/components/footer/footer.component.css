@@ -1,0 +1,9 @@
+.footer-container{
+    background-color: #21145F;
+}
+
+.footer-container a {
+    --bs-text-opacity: 1;
+    color: #fff !important;
+    text-decoration: none;
+}

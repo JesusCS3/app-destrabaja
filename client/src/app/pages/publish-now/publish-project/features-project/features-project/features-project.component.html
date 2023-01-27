@@ -1,0 +1,44 @@
+<!-- title requirements -->
+<div class="col-12 col-md-3 col-xl-2 text-left pt-5">
+    <h5 class="first-color-blue"><strong class="pe-2">Caracteristicas</strong>
+        <hr>
+    </h5>
+</div>
+<div class="features-project p-4">
+    <!-- input text for requierements -->
+    <div class="row mb-3">
+        <div class="col-auto">
+          <label for="budget" class="col-form-label pe-2">Tu presupuesto máximo</label>
+          <button type="button" class="question-btn" placement="end"
+          ngbTooltip="El presupuesto acordado con el destrabador estará compuesto de la siguiente manera:
+          La parte que ganará el destrabador que te ayude + comisión por uso de plataforma + comisión por
+          transacción + 16% de IVA. La suma de estos conceptos no superará tu presupuesto máximo." 
+          tooltipClass="my-custom-class">
+          <i class="bi bi-question-circle-fill "></i>
+          </button>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="budget" class="form-control" style="width: 150px ;"
+          [(ngModel)]="budget" maxlength="9"
+          (input)="sendBudget($event)">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-auto">
+          <label for="deliveryDate" class="col-form-label">¿Tienes una fecha ideal de entrega?</label>
+        </div>
+        <select class="form-select" style="width: 150px ;" (change)="dateLock($event)">
+            <option selected>Seleccionar..</option>
+            <option value="Si">Sí</option>
+            <option value="No">No</option>
+        </select>
+        <div class="col-auto">
+          <input type="date" class="deliveryDate" id="deliveryDate" class="form-control" style="width: 160px ;"
+          [ngModel]='deliveryDate' (ngModelChange)='deliveryDate=$event'
+          (input)="sendDeliveryDate($event)"
+          [disabled]="lock === false">
+        </div>
+    </div>
+</div>
+
+

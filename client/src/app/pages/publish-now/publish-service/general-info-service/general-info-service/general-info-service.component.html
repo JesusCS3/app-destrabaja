@@ -1,0 +1,179 @@
+<!-- title general info -->
+<div class="col-10 col-md-4 col-xl-3 text-left">
+    <h5 class="first-color-blue"><strong>Información General</strong>
+        <hr>
+    </h5>
+</div>
+<!-- input text for general info -->
+<div class="general-info p-4">
+    <div class="input-group">
+        <div class="col-xl-7">
+            <div class="col-xl-12">
+                <div class="mb-3 row">
+                    <label for="input" class="col-md-5 col-xl-5 col-form-label">Nombre de tu<br>
+                        servicio</label>
+                    <div class="col-md-7 col-xl-6">
+                        <input type="textt" class="form-control" id="nameService" name="nameService"
+                            [(ngModel)]="nameService" (input)="sendNameService($event)" maxlength="45">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="input" class="col-md-5 col-xl-5 col-form-label">Hashtags<br>
+                        <span style="font-size: 0.7rem ;">(Palabras clave como: #Clases #Diseño)</span></label>
+                    <div class="col-md-7 col-xl-6">
+                        <input type="textt" class="form-control" id="hashtags" name="hashtags" 
+                        [(ngModel)]="hashtags" (input)="sendHashtags($event)">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <div class="input-group mb-3">
+                    <div class="col-md-6 col-xl-6 mb-3 row">
+                        <label for="input" class="col-12 col-md-4 col-xl-5 col-form-label">Categoría del
+                            servicio</label>
+                        <div class="col-12 col-md-8 col-xl-7">
+                            <select class="form-select" aria-label="select category" id="category" name="category"
+                                [(ngModel)]="category" (input)="sendCategory($event)">
+                                <option selected disabled>Seleccionar...</option>
+                                <option *ngFor="let category of categoryList" [value]="category.id">
+                                    {{category.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-6 mb-3 row">
+                        <label for="input" class="col-12 col-md-4 col-xl-4 col-form-label">Sub-
+                            Categoría</label>
+                        <div class="col-12 col-md-8 col-xl-7">
+                            <select class="form-select" aria-label="select subcategory" id="subcategory"
+                                name="subcategory" [(ngModel)]="subcategory" (input)="sendSubcategory($event)">
+                                <option selected disabled>Seleccionar...</option>
+                                <option value="1">Uno</option>
+                                <option value="2">Dos</option>
+                                <option value="3">Tres</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 row align-items-center">
+            <div class="row justify-content-center">
+                <label class="col-12 col-form-label text-center">Agrega contenido visual a tu
+                    servicio</label>
+                <div class="input-group mb-3">
+                    <div class="col-12 col-md-6 col-xl-6 p-3">
+                        <!-- add video file-->
+                        <div>
+                            <!-- preview video file -->
+                            <div>
+                                <!-- capturing video for service -->
+                                <div class="previewFile">
+                                    <div *ngIf="!url; else previewVideotemplate">
+                                        <div class="img-ico">
+                                            <i class="bi bi-camera-video-fill"></i>
+                                            <p id="text-file">Máximo 50 mb</p>
+                                        </div>
+                                    </div>
+                                    <!-- preview video for service-->
+                                    <ng-template #previewVideotemplate>
+                                        <div class="previewImageFile">
+                                            <div class="previewImageHeader">
+                                                <video [src]="url" *ngIf="url" controls></video>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                    <!-- buttons to add and delete file -->
+                                    <div class="btns-SendFile">
+                                        <div class="btns-file">
+                                            <div class="btn-add">
+                                                <div class="sendFile">
+                                                    <i class="bi bi-folder-plus add"></i>
+                                                    <input type="file" class="addFile" id="videoFile" name="videoFile"
+                                                        [(ngModel)]="videoFile" accept="video/*"
+                                                        (input)="sendVideoFile($event)"
+                                                        (change)="onSelectFile($event)">
+                                                </div>
+                                            </div>
+                                            <div class="btn-delete">
+                                                <div class="deleteFile">
+                                                    <i class="bi bi-folder-minus delete"
+                                                        (click)="deletePreviewVideo()"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-6 p-3">
+                        <!-- add image file-->
+                        <div>
+                            <!-- preview image file -->
+                            <div>
+                                <!-- capturing images for service -->
+                                <div class="previewFile">
+                                    <div *ngIf="!previewImg; else previewImgtemplate">
+                                        <div class="img-ico">
+                                            <i class="bi bi-image"></i>
+                                            <p id="text-file">Máximo 3 fotos</p>
+                                        </div>
+                                    </div>
+                                    <!-- preview images for service-->
+                                    <ng-template #previewImgtemplate>
+                                        <div class="previewImageFile">
+                                            <div class="previewImageHeader">
+                                                <div id="carouselGeneralInfo" class="carousel slide carousel-fade">
+                                                    <div class="carousel-inner">
+                                                      <div class="carousel-item active" *ngIf="previewImg">
+                                                        <img [src]="previewImg" alt="preview-img-service" />
+                                                      </div>
+                                                      <div class="carousel-item" *ngIf="previewImgTwo">
+                                                        <img [src]="previewImgTwo" alt="preview-img-service" />
+                                                      </div>
+                                                      <div class="carousel-item" *ngIf="previewImgThree">
+                                                        <img [src]="previewImgThree" alt="preview-img-service" />
+                                                      </div>
+                                                    </div>
+                                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselGeneralInfo" data-bs-slide="prev">
+                                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                      <span class="visually-hidden">Anterior</span>
+                                                    </button>
+                                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselGeneralInfo" data-bs-slide="next">
+                                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                      <span class="visually-hidden">Siguiente</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                    <!-- buttons to add and delete file -->
+                                    <div class="btns-SendFile">
+                                        <div class="btns-file">
+                                            <div class="btn-add">
+                                                <div class="sendFile">
+                                                    <i class="bi bi-folder-plus add"></i>
+                                                    <input type="file" class="addFile" accept="image/*" multiple
+                                                        id="imageFile" name="imageFile" 
+                                                        [(ngModel)]="imageFile"
+                                                        (input)="sendImageFile($event)"
+                                                        (change)="captureFileImg($event)">
+                                                </div>
+                                            </div>
+                                            <div class="btn-delete">
+                                                <div class="deleteFile">
+                                                    <i class="bi bi-folder-minus delete"
+                                                        (click)="deletePreviewImages()"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

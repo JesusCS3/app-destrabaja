@@ -1,0 +1,41 @@
+<!-- title requirements -->
+<div class="col-12 col-md-3 col-xl-2 text-left pt-5">
+    <h5 class="first-color-blue"><strong class="pe-2">Tus requisitos</strong>
+        <button type="button" class="question-btn" placement="end"
+        ngbTooltip="Indica aquella información que requieres de los clientes para poder brindar un servicio.
+        Estas preguntas se le mostrarán al cliente que contrate tu servicio." 
+        tooltipClass="my-custom-class">
+        <i class="bi bi-question-circle-fill "></i>
+        </button>
+        <hr>
+    </h5>
+</div>
+<div class="requirements p-4">
+    <div class="pb-4">
+        <label>Indica aquella información que requieres de los clientes para poder brindar un servicio.</label>
+    </div>
+    <!-- requirements preview -->
+    <div>
+        <ul class="align-middle">
+            <li *ngFor="let requirements of requirementsService" class="element">
+                <div class="elementDescription pe-3">{{requirements.requirement}}</div>
+                <div class="elementDelete">
+                    <button class="elementDelete--btn">
+                        <i class="bi bi-x-circle" type="button" (click)="deleteRequirement(requirements)"></i>
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- input text for requierements -->
+    <div class="mb-3 col-9">
+        <label for="requirementInput" class="form-label">1. Pregunta, comentario o requisito</label>
+        <input type="text" class="form-control" id="requirementInput" name="requirementInput"
+            [(ngModel)]="requirementInput"
+            maxlength="150">
+    </div>
+    <!-- add requirement btn -->
+    <button type="button" class="btn blue-btn" (click)="addRequirement(); clear()">
+        + Agregar pregunta, comentario o requisito.
+    </button>
+</div>

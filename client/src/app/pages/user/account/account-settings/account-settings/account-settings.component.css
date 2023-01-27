@@ -1,0 +1,66 @@
+/*custom shadow */
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.37) !important;
+}
+  
+/* main container account settings */
+.account-settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings{
+    padding: 2rem;
+}
+
+.settings h3 {
+    color: #425CC7;
+    text-align: center;
+}
+
+/* customized hr */
+.underline-settings {
+    border: 1px solid #54C8E8;
+    opacity: 1;
+}
+
+
+/* account settings table */
+.account-settings-table thead{
+    color: #425CC7;
+    font-weight: bold;
+}
+
+.account-settings-table tbody th{
+    color: #425CC7;
+    font-weight: lighter;
+}
+
+.account-settings-table th, .extras-table td{
+    padding: 0.3rem;
+}
+
+/* profile settings table */
+.profile-settings-table thead{
+    color: #425CC7;
+    font-weight: bold;
+}
+
+.profile-settings-table tbody th{
+    color: #425CC7;
+    font-weight: lighter;
+}
+
+.profile-settings-table th, .extras-table td{
+    padding: 0.3rem;
+}
+
+.settings-link{
+    text-decoration:none;
+}
+
+.settings-link:hover{
+    color: #FF4713;
+}
+

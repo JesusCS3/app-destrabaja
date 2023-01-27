@@ -1,0 +1,57 @@
+/* main container edit account*/
+.edit-account{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* edit account form */
+.edit-account-form{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    border-radius: 0.375rem;
+}
+
+.form-fields{
+    gap: .5rem;
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+}
+
+.edit-account-form h5{
+    color: #425CC7;
+    text-align: center;
+    font-weight: bold;
+    padding: 1.5rem;
+}
+
+/* invalid fields */
+.invalid-fields{
+    color: #FF4713;
+    font-size: .7rem;
+}
+  
+/* custom update button*/
+.updateAccount {
+    --bs-btn-color: #FF4713;
+    --bs-btn-border-color: #FF4713;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #FF4713;
+    --bs-btn-hover-border-color: #FF4713;
+    --bs-btn-focus-shadow-rgb: 33, 37, 41;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #FF4713;
+    --bs-btn-active-border-color: #FF4713;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #FF4713;
+    --bs-btn-disabled-bg: transparent;
+    --bs-gradient: none;
+}
+  
+/*custom shadow */
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.37) !important;
+}
+  

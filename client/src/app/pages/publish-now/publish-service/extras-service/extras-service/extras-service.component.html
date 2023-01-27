@@ -1,0 +1,280 @@
+<div class="col-6 col-xl-1 text-left pt-5">
+    <h5 class="first-color-blue"><strong class="pe-2">Extras</strong>
+        <button type="button" class="question-btn" placement="end"
+        ngbTooltip="Aquí se incluyen aquellas actividades que complementan los servicios que ofreces.
+        Estos montos se añadirán al costo del servicio en caso de que el cliente los solicite." 
+        tooltipClass="my-custom-class">
+        <i class="bi bi-question-circle-fill "></i>
+        </button>
+        <hr>
+    </h5>
+</div>
+<div class="extras">
+    <!-- extras inputs-->
+    <table class="extras-table pb-5">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Plan 1</th>
+                <th>Plan 2</th>
+                <th>Plan 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="plans">
+                <th>
+                    <input class="extras-input" type="text" name="nameExtra" id="nameExtra"
+                        placeholder="Nombre de tu extra" maxlength="30" [(ngModel)]="nameExtra"
+                        (input)="sendNameExtra($event)">
+                </th>
+                <td data-label="Plan 1">
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="initialPlanExtra" name="initialPlanExtra"
+                            [(ngModel)]="initialPlanExtra" (change)="sendInitialPlanExtra(); clearInfoInitial()">
+                    </div>
+                </td>
+                <td data-label="Plan 2">
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="plusPlanExtra" name="plusPlanExtra"
+                            [(ngModel)]="plusPlanExtra" (change)="sendPlusPlanExtra(); clearInfoPlus()">
+                    </div>
+                </td>
+                <td data-label="Plan 3">
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="premiumPlanExtra" name="premiumPlanExtra"
+                            [(ngModel)]="premiumPlanExtra" (change)="sendPremiumPlanExtra(); clearInfoPremium()">
+                    </div>
+                </td>
+            </tr>
+            <tr id="deliveryTime">
+                <th>Tiempo de entrega</th>
+                <td data-label="Plan 1">
+                    <div>
+                        <input class="extras-input" type="text" name="deliveryTimeInitialPlanExtra" id="deliveryTimeInitialPlanExtra"
+                            maxlength="3" [(ngModel)]="deliveryTimeInitialPlanExtra"
+                            (input)="sendDeliveryTimeInitialPlanExtra($event)" [disabled]="initialPlanExtra === false">
+                        <label for="deliveryTimeInitialPlanExtra" id="labelDeliveryTimeInitialPlanExtra">días hab.</label>
+                    </div>
+                    
+                </td>
+                <td data-label="Plan 2">
+                    <div>
+                        <input class="extras-input" type="text" name="deliveryTimePlusPlanExtra" id="deliveryTimePlusPlanExtra" maxlength="3"
+                            [(ngModel)]="deliveryTimePlusPlanExtra" (input)="sendDeliveryTimePlusPlanExtra($event)"
+                            [disabled]="plusPlanExtra === false">
+                        <label for="deliveryTimePlusPlanExtra" id="labelDeliveryTimePlusPlanExtra">días hab.</label>
+                    </div>
+                </td>
+                <td data-label="Plan 3">
+                    <div>
+                        <input class="extras-input" type="text" name="deliveryTimePremiumPlanExtra" id="deliveryTimePremiumPlanExtra"
+                            maxlength="3" [(ngModel)]="deliveryTimePremiumPlanExtra"
+                            (input)="sendDeliveryTimePremiumPlanExtra($event)" [disabled]="premiumPlanExtra === false">
+                        <label for="deliveryTimePremiumPlanExtra" id="labelDeliveryTimePremiumPlanExtra">días hab.</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>¿Cuánto quieres ganar por
+                    este extra?<span>(en pesos mexicanos)</span>
+                </th>
+                <td data-label="Plan 1">
+                    <input class="extras-input" type="text" name="priceInitialPlanExtra" id="priceInitialPlanExtra"
+                        [(ngModel)]="priceInitialPlanExtra" (input)="sendPriceInitialPlanExtra($event)"
+                        (keyup)="clientPriceInitialPlanExtra()" [value]="priceInitialPlanExtra"
+                        [disabled]="initialPlanExtra === false || readOnlyPriceExtra" maxlength="9">
+                </td>
+                <td data-label="Plan 2">
+                    <input class="extras-input" type="text" name="pricePlusPlanExtra" id="pricePlusPlanExtra"
+                        [(ngModel)]="pricePlusPlanExtra" (input)="sendPricePlusPlanExtra($event)"
+                        [disabled]="plusPlanExtra === false || readOnlyPricePlusExtra"
+                        (keyup)="clientPricePlusPlanExtra()" [value]="pricePlusPlanExtra" maxlength="9">
+                </td>
+                <td data-label="Plan 3">
+                    <input class="extras-input" type="text" name="pricePremiumPlanExtra" id="pricePremiumPlanExtra"
+                        [(ngModel)]="pricePremiumPlanExtra" (input)="sendPricePremiumPlanExtra($event)"
+                        [disabled]="premiumPlanExtra === false || readOnlyPricePremiumExtra"
+                        (keyup)="clientPricePremiumPlanExtra()" [value]="pricePremiumPlanExtra" maxlength="9">
+                </td>
+            </tr>
+            <tr>
+                <th>Precio que verá el cliente</th>
+                <td data-label="Plan 1">
+                    <input class="extras-input" type="text" name="priceClientInitialPlanExtra"
+                        id="priceClientInitialPlanExtra" [(ngModel)]="priceClientInitialPlanExtra"
+                        (input)="sendPriceClientInitialPlanExtra($event)"
+                        (keyup)="priceExtraInitialPlan()" [value]="priceClientInitialPlanExtra"
+                        [disabled]="initialPlanExtra === false || readOnlyPriceClientExtra" maxlength="9">
+                </td>
+                <td data-label="Plan 2">
+                    <input class="extras-input" type="text" name="priceClientPlusPlanExtra"
+                        id="priceClientPlusPlanExtra" [(ngModel)]="priceClientPlusPlanExtra"
+                        (input)="sendPriceClientPlusPlanExtra($event)"
+                        [disabled]="plusPlanExtra === false || readOnlyPricePlusClientExtra"
+                        (keyup)="priceExtraPlusPlan()" [value]="priceClientPlusPlanExtra" maxlength="9">
+                </td>
+                <td data-label="Plan 3">
+                    <input class="extras-input" type="text" name="priceClientPremiumPlanExtra"
+                        id="priceClientPremiumPlanExtra" [(ngModel)]="priceClientPremiumPlanExtra"
+                        (input)="sendPriceClientPremiumPlanExtra($event)"
+                        [disabled]="premiumPlanExtra === false || readOnlyPricePremiumClientExtra"
+                        (keyup)="priceExtraPremiumPlan()" [value]="priceClientPremiumPlanExtra" maxlength="9">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="add-extra">
+        <button type="button" class="btn blue-btn" (click)="addExtraService(); clearInfo()">
+            + Agregar Extra
+        </button>
+    </div>
+    <div class="pt-5" *ngIf="extraService.length != 0">
+        <h5 class="first-color-blue py-3"><strong>Extras Agregados</strong></h5>
+        <div>
+            <!-- extras preview -->
+            <table class="extras-table bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Plan 1</th>
+                        <th>Plan 2</th>
+                        <th>Plan 3</th>
+                    </tr>
+                </thead>
+                <tbody  *ngFor="let extras of extraService">
+                    <tr id="plans">
+                        <th>
+                            <div>
+                                <input class="extras-input" type="text" id="nameExtraPreview"
+                                placeholder="Nombre de tu extra" maxlength="30" [value]="extras.nameExtra"
+                                [(ngModel)]="extras.nameExtra" [name]="extras.nameExtra"
+                                [disabled]="editExtras === false">
+                                <button class="btn delete-extra-btn">
+                                    <i class="bi bi-x-circle" (click)="deleteExtra(extras)"></i>
+                                </button>
+                                <button class="btn edit-extra-btn">
+                                    <i class="bi bi-pencil-square" (click)="editExtrasInfo(); getExtrasInfo(extras)"></i>
+                                </button>
+                            </div>
+                        </th>
+                        <td data-label="Plan 1">
+                            <div>
+                                <input class="form-check-input" type="checkbox" id="initialPlanExtra"
+                                [(ngModel)]="extras.initialPlanExtra"
+                                (change)="clearExtra(extras)"
+                                [disabled]="editExtras === false">
+                            </div>
+                        </td>
+                        <td data-label="Plan 2">
+                            <div>
+                                <input class="form-check-input" type="checkbox" id="plusPlanExtra" 
+                                [(ngModel)]="extras.plusPlanExtra"
+                                (change)="clearExtraPlus(extras)"
+                                [disabled]="editExtras === false">
+                            </div>
+                        </td>
+                        <td data-label="Plan 3">
+                            <div>
+                                <input class="form-check-input" type="checkbox" id="premiumPlanExtra" 
+                                [(ngModel)]="extras.premiumPlanExtra"
+                                (change)="clearExtraPremium(extras)"
+                                [disabled]="editExtras === false">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="deliveryTime">
+                        <th>Tiempo de entrega</th>
+                        <td data-label="Plan 1">
+                            <div>
+                                <input class="extras-input" type="text" id="deliveryTimeInitialPlanExtra"
+                                    maxlength="3" [value]="extras.deliveryTimeExtra" 
+                                    [(ngModel)]="extras.deliveryTimeExtra"
+                                    [disabled]="editExtras === false || extras.initialPlanExtra === false">
+                                <label for="deliveryTimeInitialPlanExtra" id="labelDeliveryTimeInitialPlanExtra">días hab.</label>
+                            </div>
+                            
+                        </td>
+                        <td data-label="Plan 2">
+                            <div>
+                                <input class="extras-input" type="text" id="deliveryTimePlusPlanExtra" maxlength="3"
+                                    [value]="extras.deliveryTimeExtraPlus" 
+                                    [(ngModel)]="extras.deliveryTimeExtraPlus"
+                                    [disabled]="editExtras === false || extras.plusPlanExtra === false">
+                                <label for="deliveryTimePlusPlanExtra" id="labelDeliveryTimePlusPlanExtra">días hab.</label>
+                            </div>
+                        </td>
+                        <td data-label="Plan 3">
+                            <div>
+                                <input class="extras-input" type="text" id="deliveryTimePremiumPlanExtra"
+                                    maxlength="3" [value]="extras.deliveryTimeExtraPremium" 
+                                    [(ngModel)]="extras.deliveryTimeExtraPremium"
+                                    [disabled]="editExtras === false || extras.premiumPlanExtra === false">
+                                <label for="deliveryTimePremiumPlanExtra" id="labelDeliveryTimePremiumPlanExtra">días hab.</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>¿Cuánto quieres ganar por
+                            este extra?<span>(en pesos mexicanos)</span>
+                        </th>
+                        <td data-label="Plan 1">
+                            <input class="extras-input" type="text" id="priceInitialPlanExtra"
+                                (keyup)="clientPriceExtra(extras)" [value]="extras.priceExtra" maxlength="9"
+                                [(ngModel)]="extras.priceExtra"
+                                [disabled]="editExtras === false || extras.initialPlanExtra === false || readOnlyPriceExtra">
+                        </td>
+                        <td data-label="Plan 2">
+                            <input class="extras-input" type="text" id="pricePlusPlanExtra"
+                                [(ngModel)]="extras.priceExtraPlus"   
+                                (keyup)="clientPriceExtraPlus(extras)" [value]="extras.priceExtraPlus" maxlength="9"
+                                [disabled]="editExtras === false || extras.plusPlanExtra === false || readOnlyPricePlusExtra">
+                        </td>
+                        <td data-label="Plan 3">
+                            <input class="extras-input" type="text" id="pricePremiumPlanExtra"
+                                [(ngModel)]="extras.priceExtraPremium"
+                                (keyup)="clientPriceExtraPremium(extras)" [value]="extras.priceExtraPremium" maxlength="9"
+                                [disabled]="editExtras === false || extras.premiumPlanExtra === false || readOnlyPricePremiumExtra">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Precio que verá el cliente</th>
+                        <td data-label="Plan 1">
+                            <input class="extras-input" type="text" id="priceClientInitialPlanExtra" 
+                                (keyup)="priceExtra(extras)" [value]="extras.priceClientExtra"
+                                [(ngModel)]="extras.priceClientExtra"
+                                [disabled]="editExtras === false || extras.initialPlanExtra === false || readOnlyPriceClientExtra" maxlength="9">
+                        </td>
+                        <td data-label="Plan 2">
+                            <input class="extras-input" type="text" id="priceClientPlusPlanExtra"
+                                (keyup)="priceExtraPlus(extras)" [value]="extras.priceClientExtraPlus" maxlength="9"
+                                [(ngModel)]="extras.priceClientExtraPlus"
+                                [disabled]="editExtras === false || extras.plusPlanExtra === false || readOnlyPricePlusClientExtra">
+                        </td>
+                        <td data-label="Plan 3">
+                            <input class="extras-input" type="text" id="priceClientPremiumPlanExtra"
+                                (keyup)="priceExtraPremium(extras)" [value]="extras.priceClientExtraPremium" maxlength="9"
+                                [(ngModel)]="extras.priceClientExtraPremium"
+                                [disabled]="editExtras === false || extras.premiumPlanExtra === false || readOnlyPricePremiumClientExtra">
+                        </td>
+                    </tr>
+                    <tr *ngIf="editExtras != false">
+                        <td class="canceledExtra-btn">
+                            <button type="button" class="btn blue-btn" (click)="ifExtraCanceled(extras)">
+                                Cancelar edición
+                            </button>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="editExtra-btn">
+                            <div>
+                                <button type="button" class="btn blue-btn" (click)="updateInfo(extras)">
+                                    Guardar cambios
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

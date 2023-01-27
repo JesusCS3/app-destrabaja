@@ -1,0 +1,113 @@
+/* customized cards project */
+.card-service{
+    max-width: 630px;
+    max-height: 173px;
+    min-height: 173px;
+    -webkit-border-radius: 2rem 0 0 2rem;
+    -moz-border-radius: 2rem 0 0 2rem;
+    border-radius: 2rem 0 0 2rem;
+    border: 1px solid rgba(0,0,0,.125);
+    background-color: #fff;
+    display: flex;
+}
+
+.card-service-header{
+    max-width: 252px;
+    min-width: 252px;
+    
+}
+
+.card-service-header img, video{
+    height: 173px;
+    max-height: 173px;
+    width: 100%;
+    object-fit: cover;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    border-radius: 2rem;
+}
+
+.card-service-body{
+    height: 173px;
+    max-height: 173px;
+    width: 378px;
+    position: relative;
+}
+
+.card-service-body h5{
+    color: #425CC7;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: .5rem 1rem 0 1rem;
+}
+
+.card-service-body p{
+    font-size: .8rem;
+    padding: 0 1rem;
+}
+
+.card-service-body #description{
+    text-align: justify;
+    color: #425CC7;
+}
+
+.card-service-body #publishedRow{
+    color: #425CC7;
+    font-weight: bold;
+    position: absolute;
+    top: 80%;
+    display: flex;
+    width: 100%;
+}
+
+.card-service-body #publishedIcon{
+    width:50%; 
+    display:inline-block;
+    padding-left: 2rem !important;
+}
+
+/* published */
+.card-service-body #iconsRow{
+    display: flex;
+}
+
+.card-service-body #iconSeen{
+    width:50%; 
+    display:inline-block;
+}
+
+.card-service-body #iconPerson{
+    width:50%; 
+    display:inline-block;
+}
+
+.card-service-body #published{
+    width:50%; 
+    display:inline-block;
+}
+
+/* cut arrow lengths */
+.carousel-control-next, .carousel-control-prev {
+    position: absolute;
+    top: 71px;
+    bottom: 71px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    background: 0 0;
+    border: 0;
+    opacity: .5;
+    transition: opacity .15s ease;
+}
+
+/*custom shadow */
+.shadow-lg {
+    box-shadow: 0.5rem 1rem 1rem  rgba(0, 0, 0, 0.192) !important;
+}
+
+

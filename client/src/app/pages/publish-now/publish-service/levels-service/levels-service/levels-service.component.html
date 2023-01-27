@@ -1,0 +1,230 @@
+<!-- title service levels -->
+<div class="col-8 col-md-4 col-xl-2 text-left pt-5">
+    <h5 class="first-color-blue"><strong>Planes de servicio</strong>
+        <hr>
+    </h5>
+</div>
+<!-- input text for service levels -->
+<div class="levels">
+    <table class="table-levels">
+        <thead>
+            <tr>
+                <th id="enablePlans">Activar planes</th>
+                <th>
+                    Plan 1
+                </th>
+                <th>
+                    Plan 2
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="checkboxPlusPlan"
+                            aria-label="checkboxPlusPlan" name="checkboxPlusPlan" [(ngModel)]="checkboxPlusPlan"
+                            (change)="clearPlusPlan(); clearInfoPlus()">
+                    </div>
+                </th>
+                <th>
+                    Plan 3
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="checkboxPremiumPlan"
+                            aria-label="checkboxPremiumPlan" name="checkboxPremiumPlan"
+                            [(ngModel)]="checkboxPremiumPlan" (change)="clearPremiumPlan(); clearInfoPremium()">
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    Nombre de cada plan
+                </th>
+                <td data-label="Plan 1">
+                    <input class="levels-input" type="text" name="initialPlanName" id="initialPlanName"
+                        placeholder="Nombre del plan 1" [(ngModel)]="initialPlanName"
+                        (input)="sendInitialPlanName($event)" maxlength="30">
+                </td>
+                <td data-label="Plan 2">
+                    <input class="levels-input" type="text" name="plusPlanName" id="plusPlanName"
+                        placeholder="Nombre del plan 2" [(ngModel)]="plusPlanName"
+                        (input)="sendPlusPlanName($event)"
+                        [disabled]="checkboxPlusPlan === false" maxlength="30">
+                </td>
+                <td data-label="Plan 3">
+                    <input class="levels-input" type="text" name="premiumPlanName" id="premiumPlanName"
+                        placeholder="Nombre del plan 3" [(ngModel)]="premiumPlanName"
+                        (input)="sendPremiumPlanName($event)"
+                        [disabled]="checkboxPremiumPlan === false" maxlength="30">
+                </td>
+            </tr>
+            <!-- deliverables preview -->
+            <tr id="deliverablesPreview" *ngFor="let deliverables of deliverables" class="deliverable">
+                <th>
+                    <div class="deliverableDescription pe-3">{{deliverables.name}}</div>
+                    <div class="deleteDeliverable">
+                        <button class="deleteDeliverable-btn">
+                            <i class="bi bi-x-circle" type="button" (click)="deleteDeliverable(deliverables)"></i>
+                        </button>
+                    </div>
+                </th>
+                <td data-label="Plan 1">
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="checkboxDeliverableInitialPlan"
+                            [(ngModel)]="deliverables.initialPlan" aria-label="...">
+                    </div>
+                </td>
+                <td data-label="Plan 2">
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="checkboxDeliverablePlusPlan"
+                            [(ngModel)]="deliverables.plusPlan" aria-label="..."
+                            [disabled]="checkboxPlusPlan === false">
+                    </div>
+                </td>
+                <td data-label="Plan 3">
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="checkboxDeliverablePremiumPlan"
+                            [(ngModel)]="deliverables.premiumPlan" aria-label="..."
+                            [disabled]="checkboxPremiumPlan === false">
+                    </div>
+                </td>
+            </tr>
+            <tr id="deliverableInfo">
+                <th>
+                    <div>
+                        <input class="levels-input" type="text" name="deliverableInput" id="deliverableInput"
+                            [(ngModel)]="deliverableInput" placeholder="Agregar entregable"
+                            maxlength="30" (keyup)="$event.keyCode == 13 ? addDeliverable() : null">
+                        <button class="btn deliverable-btn">
+                            <i class="bi bi-plus-circle" type="button" (click)="addDeliverable();"></i>
+                        </button>
+                    </div>
+                </th>
+                <td data-label="Plan 1">
+                    <div>
+                        <input class="form-check-input" type="checkbox" name="deliverableInputInitialPlan"
+                        id="deliverableInputInitialPlan" [(ngModel)]="deliverableInputInitialPlan">
+                    </div>
+                </td>
+                <td data-label="Plan 2">
+                    <div>
+                        <input class="form-check-input" type="checkbox" name="deliverableInputPlusPlan"
+                        id="deliverableInputPlusPlan" [(ngModel)]="deliverableInputPlusPlan"
+                        [disabled]="checkboxPlusPlan === false">
+                    </div>
+                </td>
+                <td data-label="Plan 3">
+                    <div>
+                        <input class="form-check-input" type="checkbox" name="deliverableInputPremiumPlan"
+                        id="deliverableInputPremiumPlan" [(ngModel)]="deliverableInputPremiumPlan"
+                        [disabled]="checkboxPremiumPlan === false">
+                    </div>
+                </td>
+            </tr>
+            <tr id="deliveryTimeLevels">
+                <th>Máximo tiempo de entrega</th>
+                <td data-label="Plan 1">
+                    <div>
+                        <input type="text" class="levels-input" name="deliveryTimeInitialPlan" id="deliveryTimeInitialPlan"
+                            [(ngModel)]="deliveryTimeInitialPlan" 
+                            (input)="sendDeliveryTimeInitialPlan($event)" maxlength="3">
+                        <label for="deliveryTimeInitialPlan" id="labelDeliveryTimeInitialPlan">días hab.</label>
+                    </div>
+                </td>
+                <td data-label="Plan 2">
+                    <div>
+                        <input type="text" class="levels-input" name="deliveryTimePlusPlan" id="deliveryTimePlusPlan"
+                        [(ngModel)]="deliveryTimePlusPlan" [disabled]="checkboxPlusPlan === false"
+                        (input)="sendDeliveryTimePlusPlan($event)" maxlength="3">
+                        <label for="deliveryTimePlusPlan" id="labelDeliveryTimePlusPlan">días hab.</label>
+                    </div>
+                </td>
+                <td data-label="Plan 3">
+                    <div>
+                        <input type="text" class="levels-input" name="deliveryTimePremiumPlan" id="deliveryTimePremiumPlan"
+                        [(ngModel)]="deliveryTimePremiumPlan" [disabled]="checkboxPremiumPlan === false"
+                        (input)="sendDeliveryTimePremiumPlan($event)" maxlength="3">
+                        <label for="deliveryTimePremiumPlan" id="labelDeliveryTimePremiumPlan">días hab.</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Comentarios<br>
+                    <span style="font-size: 0.7rem;">(Número de revisiones, horario de atención, propuestas iniciales de diseño, etc.)</span>
+                </th>
+                <td data-label="Plan 1">
+                    <input class="levels-input" type="text" name="commentInitialPlan" id="commentinItialPlan"
+                        [(ngModel)]="commentInitialPlan" (input)="sendCommentInitialPlan($event)"
+                        placeholder="Agregar comentario" maxlength="60">
+                </td>
+                <td data-label="Plan 2">
+                    <input class="levels-input" type="text" name="commentPlusPlan" id="commentPlusPlan"
+                        [(ngModel)]="commentPlusPlan" (input)="sendCommentPlusPlan($event)"
+                        placeholder="Agregar comentario" maxlength="60"
+                        [disabled]="checkboxPlusPlan === false">
+                </td>
+                <td data-label="Plan 3">
+                    <input class="levels-input" type="text" name="commentPremiumPlan" id="commentPremiumPlan"
+                        [(ngModel)]="commentPremiumPlan" (input)="sendCommentPremiumPlan($event)"
+                        placeholder="Agregar comentario" maxlength="60"
+                        [disabled]="checkboxPremiumPlan === false">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    ¿Cuánto quieres ganar por venta?<br>
+                    <span style="font-size: 0.7rem;">(en pesos mexicanos)</span>
+                    <button type="button" class="question-btn ps-2" placement="end" ngbTooltip="Ingresa el monto que recibirás por cada venta que realices de cada servicio. 
+                    Si ingresas, por ejemplo 299 pesos, recibirás por esa venta dichos 299 pesos. Debe incluir
+                    el IVA en caso de que te soliciten factura." tooltipClass="my-custom-class">
+                        <i class="bi bi-question-circle-fill "></i>
+                    </button>
+                </th>
+                <td data-label="Plan 1">
+                    <input class="levels-input" type="text" name="priceInitialPlan" id="priceInitialPlan"
+                        [(ngModel)]="priceInitialPlan" (keyup)="clientPrice()" [value]="priceInitialPlan"
+                        (input)="sendPriceInitialPlan($event)" 
+                        [disabled]="readOnlyPrice" maxlength="9">
+                </td>
+                <td data-label="Plan 2">
+                    <input class="levels-input" type="text" name="pricePlusPlan" id="pricePlusPlan"
+                        [(ngModel)]="pricePlusPlan" [disabled]="checkboxPlusPlan === false || readOnlyPricePlus"
+                        (keyup)="clientPricePlus()" [value]="pricePlusPlan"
+                        (input)="sendPricePlusPlan($event)" maxlength="9">
+                </td>
+                <td data-label="Plan 3">
+                    <input class="levels-input" type="text" name="pricePremiumPlan" id="pricePremiumPlan"
+                        [(ngModel)]="pricePremiumPlan"
+                        [disabled]="checkboxPremiumPlan === false || readOnlyPricePremium"
+                        (keyup)="clientPricePremium()" [value]="pricePremiumPlan"
+                        (input)="sendPricePremiumPlan($event)" maxlength="9">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Precio que verá el cliente
+                    <button type="button" class="question-btn ps-2" placement="end" ngbTooltip="Los clientes verán un precio que incluye: Lo que vas a ganar de la 
+                    venta + comisión por uso de plataforma + comisión por transacción + 16% de IVA sobre
+                    las comisiones de Destrabaja." tooltipClass="my-custom-class">
+                        <i class="bi bi-question-circle-fill "></i>
+                    </button>
+                </th>
+                <td data-label="Plan 1">
+                    <input class="levels-input" type="text" name="priceClientInitialPlan"
+                        id="priceClientInitialPlan" [(ngModel)]="priceClientInitialPlan"
+                        [value]="priceClientInitialPlan" (keyup)="price()" (input)="sendPriceClientInitialPlan($event)"
+                        [disabled]="readOnlyPriceClient" maxlength="9">
+                </td>
+                <td data-label="Plan 2">
+                    <input class="levels-input" type="text" name="priceClientPlusPlan" id="priceClientPlusPlan"
+                        [(ngModel)]="priceClientPlusPlan"
+                        [disabled]="checkboxPlusPlan === false || readOnlyPricePlusClient" [value]="priceClientPlusPlan"
+                        (keyup)="pricePlus()" (input)="sendPriceClientPlusPlan($event)" maxlength="9">
+                </td>
+                <td data-label="Plan 3">
+                    <input class="levels-input" type="text" name="priceClientPremiumPlan"
+                        id="priceClientPremiumPlan" [(ngModel)]="priceClientPremiumPlan"
+                        [disabled]="checkboxPremiumPlan === false || readOnlyPricePremiumClient"
+                        (keyup)="pricePremium()" (input)="sendPriceClientPremiumPlan($event)" maxlength="9">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

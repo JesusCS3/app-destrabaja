@@ -1,0 +1,80 @@
+/* customized hr */
+hr {
+    border: 1px solid #54C8E8;
+    opacity: 1;
+}
+ 
+/* customized extras-information */
+.requirements{
+    border: 1px solid #54C8E8;
+    border-radius: 0.8rem;
+}
+.requirements label{
+    color: #425CC7;
+    font-weight: bold;
+}
+
+.requirements input{
+    border: none;
+    border: 3px solid #54C8E8;
+    outline: none;
+    box-shadow: none;
+}
+
+.requirements li{
+    color: #425CC7;
+    vertical-align: middle;
+}
+
+/* customized delete extra */
+
+.element {
+    vertical-align: middle;
+    color:#425CC7;
+}
+
+.elementDescription {
+    float: left;
+}
+
+.elementDelete {
+    float: left;
+}
+
+.elementDelete--btn {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    display: none;
+    color: #425CC7;
+}
+
+.elementDelete--btn:focus { outline: none; }
+.elementDelete--btn:active { transform: translateY(2px); }
+
+.element:hover .elementDelete--btn { display: block; }
+
+/* blue button */
+.blue-btn {
+    border-radius: 2rem;
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #425CC7;
+    --bs-btn-border-color: #425CC7;
+    --bs-btn-hover-color: #425CC7;
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: #425CC7;
+    --bs-btn-focus-shadow-rgb: 66, 70, 73;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #425CC7;
+    --bs-btn-active-border-color: #425CC7;
+    --bs-btn-active-shadow: inset 0 3px 5px #425CC7;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #425CC7;
+    --bs-btn-disabled-border-color: #425CC7;
+    --bs-btn-focus-box-shadow: 0 0 0 0.25rem #425CC7;
+    box-shadow: none;
+}
